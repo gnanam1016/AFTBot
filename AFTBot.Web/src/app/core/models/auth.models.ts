@@ -1,0 +1,17 @@
+export interface LoginRequest {
+  username: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  token: string;
+  username: string;
+  displayName: string;
+  expiresAt: string;
+}
+
+export interface AdminUser {
+  username: string;
+  displayName: string;
+  role: string;
+}
