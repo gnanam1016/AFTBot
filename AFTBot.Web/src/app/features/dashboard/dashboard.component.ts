@@ -24,6 +24,7 @@ import { DashboardSummary } from '../../core/models/lead.models';
             <a routerLink="/dashboard" class="btn-outline active">📊 Dashboard</a>
             <a routerLink="/leads" class="btn-outline">👥 Leads</a>
             <a routerLink="/conversations" class="btn-outline">💬 Conversations</a>
+            <a routerLink="/users" class="btn-outline">👤 Users</a>
             <a routerLink="/" class="btn-outline">Website</a>
             <button class="btn-logout" (click)="logout()" title="Sign out of Admin Portal">🚪 Logout</button>
           </div>

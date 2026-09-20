@@ -13,13 +13,16 @@ public static class ServiceCollectionExtensions
         services.Configure<DatabaseOptions>(configuration.GetSection(DatabaseOptions.SectionName));
         services.Configure<LeadScoringOptions>(configuration.GetSection(LeadScoringOptions.SectionName));
         services.Configure<AiOptions>(configuration.GetSection(AiOptions.SectionName));
-        services.Configure<AdminAuthOptions>(configuration.GetSection(AdminAuthOptions.SectionName));
+        services.Configure<JwtOptions>(configuration.GetSection(JwtOptions.SectionName));
+        services.Configure<AdminAuthOptions>(configuration.GetSection(JwtOptions.SectionName));
 
-        // Token Service for Admin Auth
+        // Security & Token Services
+        services.AddSingleton<IPasswordHasher, PasswordHasher>();
         services.AddSingleton<ITokenService, TokenService>();
 
         // Repositories & Connection Factory
         services.AddSingleton<IDbConnectionFactory, SqlConnectionFactory>();
+        services.AddScoped<IAdminUserRepository, AdminUserRepository>();
         services.AddScoped<IChatRepository, ChatRepository>();
         services.AddScoped<IVisitorRepository, VisitorRepository>();
         services.AddScoped<ILeadRepository, LeadRepository>();

@@ -9,10 +9,10 @@ namespace AFTBot.Api.Services;
 
 public class TokenService : ITokenService
 {
-    private readonly AdminAuthOptions _options;
+    private readonly JwtOptions _options;
     private readonly byte[] _key;
 
-    public TokenService(IOptions<AdminAuthOptions> options)
+    public TokenService(IOptions<JwtOptions> options)
     {
         _options = options.Value;
         _key = Encoding.UTF8.GetBytes(_options.SecretKey);

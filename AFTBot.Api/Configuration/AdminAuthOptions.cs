@@ -1,13 +1,9 @@
 namespace AFTBot.Api.Configuration;
 
-public class AdminAuthOptions
+/// <summary>
+/// Obsolete: User credentials have moved to the [dbo].[AdminUsers] database table.
+/// JWT settings are now managed via JwtOptions and appsettings.json.
+/// </summary>
+public class AdminAuthOptions : JwtOptions
 {
-    public const string SectionName = "AdminAuth";
-
-    public string Username { get; set; } = "admin@apexfalcon.com";
-    public string Password { get; set; } = "ApexFalcon@2026!";
-    public string DisplayName { get; set; } = "Apex Falcon Admin";
-    public string SecretKey { get; set; } = "ApexFalconTechnologiesAFTBotSuperSecretKey2026!SecureKey";
-    public string Issuer { get; set; } = "AFTBot.Api";
-    public int TokenExpiryHours { get; set; } = 24;
 }

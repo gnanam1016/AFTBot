@@ -37,6 +37,11 @@ export const routes: Routes = [
     canActivate: [authGuard],
     loadComponent: () => import('./features/chat/conversations/conversations.component').then(m => m.ConversationsComponent)
   },
+  {
+    path: 'users',
+    canActivate: [authGuard],
+    loadComponent: () => import('./features/users/users.component').then(m => m.UsersComponent)
+  },
 
   // Wildcard fallback
   {

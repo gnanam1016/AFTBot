@@ -2,7 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
-import { LoginRequest, LoginResponse, AdminUser } from '../models/auth.models';
+import { LoginRequest, LoginResponse, AdminUser, AdminUserDetail, CreateAdminUserRequest } from '../models/auth.models';
 import { ApiResponse } from '../models/chat.models';
 import { environment } from '../../../environments/environment';
 
@@ -52,6 +52,14 @@ export class AuthService {
     this.currentUser.set(null);
     this.isAuthenticated.set(false);
     this.router.navigate(['/login']);
+  }
+
+  getUsers(): Observable<ApiResponse<AdminUserDetail[]>> {
+    return this.http.get<ApiResponse<AdminUserDetail[]>>(`${this.baseUrl}/auth/users`);
+  }
+
+  createUser(userData: CreateAdminUserRequest): Observable<ApiResponse<AdminUserDetail>> {
+    return this.http.post<ApiResponse<AdminUserDetail>>(`${this.baseUrl}/auth/users`, userData);
   }
 
   getToken(): string | null {
